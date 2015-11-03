@@ -8,15 +8,8 @@ def tokenise(tokenstring):
   '''Split a string into a list of tokens, treating punctuation as
   separate tokens, and splitting contractions into their parts.
   So for example "I'm leaving." --> ["I","'m","leaving","."]'''
-  return re.findall(
-    # Fill in the regular expression needed on the next line
-    # Use help(re.findall) and help(re) for information
-    # You will need three sub-patterns:
-    #   one for words and the first half of contractions
-    #   one for the rest of contractions
-    #   one for punctuation
-    # r"REPLACE ME",
-    tokenstring)
+    return re.findall(r"[a-zA-Z]+|'[a-z]+|[,.?;:()-]", tokenstring)
+
 
 grammar=parse_grammar("""
 S -> NP VP
