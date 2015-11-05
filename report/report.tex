@@ -21,12 +21,55 @@
 
 \documentclass{article}
 
+\usepackage[utf8]{inputenc}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+	language=Python,
+	basicstyle=\ttm,
+	otherkeywords={self},             % Add keywords here
+	keywordstyle=\ttb\color{deepblue},
+	emph={MyClass,__init__},          % Custom highlighting
+	emphstyle=\ttb\color{deepred},    % Custom highlighting style
+	stringstyle=\color{deepgreen},
+	frame=tb,                         % Any extra options here
+	showstringspaces=false            % 
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 \usepackage[version=3]{mhchem} % Package for chemical equation typesetting
 \usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
 \usepackage{graphicx} % Required for the inclusion of images
 \usepackage{natbib} % Required to change bibliography style to APA
 \usepackage{amsmath} % Required for some math elements 
-
+\usepackage{diagbox}
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
 
 \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
@@ -37,9 +80,15 @@
 %	DOCUMENT INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title{Determination of the Atomic \\ Weight of Magnesium \\ CHEM 101} % Title
+\title{ANLP Assignment 2} % Title
 
-\author{John \textsc{Smith}} % Author name
+\author{
+	Ida \textsc{Szubert}\\
+	\texttt{s0907677}
+	\and
+	Yue \textsc{Yu}\\
+	\texttt{s1563228}
+}
 
 \date{\today} % Date for the report
 
@@ -49,10 +98,10 @@
 
 \begin{center}
 \begin{tabular}{l r}
-Date Performed: & January 1, 2012 \\ % Date the experiment was performed
-Partners: & James Smith \\ % Partner names
-& Mary Smith \\
-Instructor: & Professor Smith % Instructor/supervisor
+%Date Performed: & January 1, 2012 \\ % Date the experiment was performed
+%Partners: & James Smith \\ % Partner names
+%& Mary Smith \\
+%Instructor: & Professor Smith % Instructor/supervisor
 \end{tabular}
 \end{center}
 
@@ -164,6 +213,71 @@ The \emph{units of atomic weight} are two-fold, with an identical numerical valu
 \end{equation*}
 \end{item}
 \end{enumerate}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 7
+%----------------------------------------------------------------------------------------
+
+\section{Ambiguity Analysis}
+
+\subsection{"John gave a book to Mary."}
+
+\begin{description}
+	\item[Distinct Parse(s):]
+	2
+	\item[Ambiguity Source:]
+	
+\end{description}
+
+\subsection{"John gave Mary a book."}
+
+\begin{description}
+	\item[Distinct Parse(s):]
+	1
+\end{description} 
+
+\subsection{"John gave Mary a nice drawing book."}
+
+\begin{description}
+	\item[Distinct Parse(s):]
+	1
+\end{description} 
+
+\subsection{"John ate salad with mushrooms with a fork."}
+
+\begin{description}
+	\item[Distinct Parse(s):]
+	4
+\end{description}
+
+\subsection{"Book a flight to NYC."}
+
+\begin{description}
+	\item[Distinct Parse(s):]
+	1
+\end{description}
+
+\subsection{"Can you book a flight to London?"}
+
+\begin{description}
+	\item[Distinct Parse(s):]
+	1
+\end{description}
+
+\subsection{"Why did John book the flight?"}
+
+\begin{description}
+	\item[Distinct Parse(s):]
+	1
+\end{description}
+
+\subsection{"John told Mary that he will book a flight today."}
+
+\begin{description}
+	\item[Distinct Parse(s):]
+	2
+\end{description}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY

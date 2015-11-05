@@ -223,7 +223,7 @@ class Cell:
         if symbol in unaries:
         	# add each of possible corresponding left hand-sides to the cell's labels
             for parent in unaries[symbol]:
-                if parent not in self._labels:
+                # if parent not in self._labels:
                     self.addLabel(parent)
                     # a recursive call is needed because in the grammar not all
                     # unary productions are terminal productions

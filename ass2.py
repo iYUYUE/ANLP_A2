@@ -8,7 +8,7 @@ def tokenise(tokenstring):
   '''Split a string into a list of tokens, treating punctuation as
   separate tokens, and splitting contractions into their parts.
   So for example "I'm leaving." --> ["I","'m","leaving","."]'''
-    return re.findall(r"[a-zA-Z]+|'[a-z]+|[,.?;:()-]", tokenstring)
+  return re.findall(r"[a-zA-Z]+|'[a-z]+|[,.?;:()-]", tokenstring)
 
 
 grammar=parse_grammar("""
@@ -27,11 +27,11 @@ Vi -> 'fish' | 'swim'
 Relpro -> 'that'
 """)
 
-print grammar
-chart=CKY(grammar)
-chart.parse("the frogs swim".split()) # Should use
-                                      # tokenise(s) once that's fixed
-chart.pprint()
+# print grammar
+# chart=CKY(grammar)
+# chart.parse("the frogs swim".split()) # Should use
+#                                       # tokenise(s) once that's fixed
+# chart.pprint()
 # Use this grammar for the rest of the assignment
 
 grammar2=parse_grammar([
@@ -83,10 +83,24 @@ chart2=CKY(grammar2)
 # Q4: Uncomment this once you've completed Q4
 # chart.parse(tokenise("the frogs swim"),True)
 # Q5 Uncomment the next three once when you're working on Q5
-#chart.parse(tokenise("fish fish"))
-#chart.pprint()
-#chart.parse(tokenise("fish fish"),True)
-# Q6
+# chart.parse(tokenise("fish fish"))
+# chart.pprint()
+# chart.parse(tokenise("fish fish"),True)
+# Q7
+for s in [
+		  # "John gave a book to Mary.",
+          # "John gave Mary a book.",
+          "John gave Mary a nice drawing book.",
+          # "John ate salad with mushrooms with a fork.",
+          # "Book a flight to NYC.",
+          # "Can you book a flight to London?",
+          # "Why did John book the flight?",
+          # "John told Mary that he will book a flight today."
+          ]:
+    print s, chart2.parse(tokenise(s),True)
+    chart2.pprint();
+
+# Q8
 # for s in ["John gave a book to Mary.",
 #           "John gave Mary a book.",
 #           "John gave Mary a nice drawing book.",
@@ -96,13 +110,9 @@ chart2=CKY(grammar2)
 #           "Why did John book the flight?",
 #           "John told Mary that he will book a flight today."]:
 #     print s, chart2.parse(tokenise(s))
-
-# Q7
-# for s in [...]:
-#     print s, chart2.parse(tokenise(s))
 #     print chart2.first_tree().pprint()
 
-# Q8
+# Q9
 # for s in [...]:
 #     print s, chart2.parse(tokenise(s))
 #     for tree in chart2.all_trees():
