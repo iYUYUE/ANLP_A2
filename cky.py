@@ -74,12 +74,19 @@ class CKY:
         return self.grammar.start() in self.matrix[0][self.n-1].labels()
 
     def unary_fill(self):
-        # Q4 Add comments throughout
+        '''Determine the possible non-terminals 
+            that each terminal can result from. 
+            Fill the results in the middle diagonal
+            and print'''
         for r in range(self.n-1):
+            # the middle diagonal
             cell=self.matrix[r][r+1]
+            # initialize the cell
             word=self.words[r]
             cell.addLabel(word)
+            # recursively update the cell
             cell.unary_update(word,self.unary)
+            # print out the possible non-terminals for each cell (terminal)
             if self.verbose:
                 print "Unary branching rules at node (%s,%s):%s"%(r,r+1,cell.labels())
 
@@ -94,15 +101,25 @@ class CKY:
                     self.maybe_build(start, mid, end)
 
     def maybe_build(self, start, mid, end):
-        # Q5 -- add comments
+        """
+        Search for the possible combinitions of 
+            the symbols in two given cells (one from each) to 
+            match the rhs of binary branching rules
+        """
         if self.verbose:
             print "Binary branching rules for %s--%s--%s:"%(start,mid,end),
         cell=self.matrix[start][end]
+        # search from the given cells
         for s1 in self.matrix[start][mid].labels():
             for s2 in self.matrix[mid][end].labels():
+                # for a binary branching rule match
                 if (s1,s2) in self.binary:
+                    # add all possible non-terminals from the lhs of the rule
                     for s in self.binary[(s1,s2)]:
                         cell.addLabel(s)
+                        # add more possible non-terminals 
+                        # because, in the grammar, there are unary rules 
+                        # that can produce non-terminals
                         cell.unary_update(s,self.unary)
                         if self.verbose:
                             print " %s -> %s %s"%(s, s1,s2),
