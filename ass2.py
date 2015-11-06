@@ -88,16 +88,16 @@ chart2=CKY(grammar2)
 # chart.parse(tokenise("fish fish"),True)
 # Q7
 for s in [
-		  # "John gave a book to Mary.",
-          # "John gave Mary a book.",
+		  "John gave a book to Mary.",
+          "John gave Mary a book.",
           "John gave Mary a nice drawing book.",
-          # "John ate salad with mushrooms with a fork.",
-          # "Book a flight to NYC.",
-          # "Can you book a flight to London?",
-          # "Why did John book the flight?",
-          # "John told Mary that he will book a flight today."
+          "John ate salad with mushrooms with a fork.",
+          "Book a flight to NYC.",
+          "Can you book a flight to London?",
+          "Why did John book the flight?",
+          "John told Mary that he will book a flight today."
           ]:
-    print s, chart2.parse(tokenise(s),True)
+    print s, chart2.parse(tokenise(s))
     chart2.pprint();
 
 # Q8
