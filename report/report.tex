@@ -94,129 +94,203 @@
 
 \begin{document}
 
-\maketitle % Insert the title, author and date
-
-\begin{center}
-\begin{tabular}{l r}
-%Date Performed: & January 1, 2012 \\ % Date the experiment was performed
-%Partners: & James Smith \\ % Partner names
-%& Mary Smith \\
-%Instructor: & Professor Smith % Instructor/supervisor
-\end{tabular}
-\end{center}
-
-% If you wish to include an abstract, uncomment the lines below
-% \begin{abstract}
-% Abstract text
-% \end{abstract}
-
 %----------------------------------------------------------------------------------------
-%	SECTION 1
+%	QUESTION 2
 %----------------------------------------------------------------------------------------
-
-\section{Objective}
-
-To determine the atomic weight of magnesium via its reaction with oxygen and to study the stoichiometry of the reaction (as defined in \ref{definitions}):
-
-\begin{center}\ce{2 Mg + O2 -> 2 MgO}\end{center}
-
-% If you have more than one objective, uncomment the below:
-%\begin{description}
-%\item[First Objective] \hfill \\
-%Objective 1 text
-%\item[Second Objective] \hfill \\
-%Objective 2 text
-%\end{description}
-
-\subsection{Definitions}
-\label{definitions}
-\begin{description}
-\item[Stoichiometry]
-The relationship between the relative quantities of substances taking part in a reaction or forming a compound, typically a ratio of whole integers.
-\item[Atomic mass]
-The mass of an atom of a chemical element expressed in atomic mass units. It is approximately equivalent to the number of protons and neutrons in the atom (the mass number) or to the average number allowing for the relative abundances of different isotopes. 
-\end{description} 
- 
-%----------------------------------------------------------------------------------------
-%	SECTION 2
-%----------------------------------------------------------------------------------------
-
-\section{Experimental Data}
-
-\begin{tabular}{ll}
-Mass of empty crucible & \SI{7.28}{\gram}\\
-Mass of crucible and magnesium before heating & \SI{8.59}{\gram}\\
-Mass of crucible and magnesium oxide after heating & \SI{9.46}{\gram}\\
-Balance used & \#4\\
-Magnesium from sample bottle & \#1
-\end{tabular}
-
-%----------------------------------------------------------------------------------------
-%	SECTION 3
-%----------------------------------------------------------------------------------------
-
-\section{Sample Calculation}
-
-\begin{tabular}{ll}
-Mass of magnesium metal & = \SI{8.59}{\gram} - \SI{7.28}{\gram}\\
-& = \SI{1.31}{\gram}\\
-Mass of magnesium oxide & = \SI{9.46}{\gram} - \SI{7.28}{\gram}\\
-& = \SI{2.18}{\gram}\\
-Mass of oxygen & = \SI{2.18}{\gram} - \SI{1.31}{\gram}\\
-& = \SI{0.87}{\gram}
-\end{tabular}
-
-Because of this reaction, the required ratio is the atomic weight of magnesium: \SI{16.00}{\gram} of oxygen as experimental mass of Mg: experimental mass of oxygen or $\frac{x}{1.31}=\frac{16}{0.87}$ from which, $M_{\ce{Mg}} = 16.00 \times \frac{1.31}{0.87} = 24.1 = \SI{24}{\gram\per\mole}$ (to two significant figures).
-
-%----------------------------------------------------------------------------------------
-%	SECTION 4
-%----------------------------------------------------------------------------------------
-
-\section{Results and Conclusions}
-
-The atomic weight of magnesium is concluded to be \SI{24}{\gram\per\mol}, as determined by the stoichiometry of its chemical combination with oxygen. This result is in agreement with the accepted value.
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.65\textwidth]{placeholder} % Include the image placeholder.png
-\caption{Figure caption.}
-\end{center}
+\section{Parse trees}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{../s1}
+	\caption{\emph{John gave a book to Mary.}}
+	\label{fig:s1}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{../s2}
+	\caption{\emph{John gave Mary a book.}}
+	\label{fig:s2}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{../s3}
+	\caption{\emph{John gave Mary a nice drawing book.}}
+	\label{fig:s3}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{../s4}
+	\caption{\emph{John ate salad with mushrooms with a fork.}}
+	\label{fig:s4}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{../s5}
+	\caption{\emph{Book a flight to NYC.}}
+	\label{fig:s5}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{../s6}
+	\caption{\emph{Can you book a flight to London?}}
+	\label{fig:s6}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{../s7}
+	\caption{\emph{Why did John book a the flight?}}
+	\label{fig:s7}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{../s8}
+	\caption{\emph{John told Mary that he will book a flight today.}}
+	\label{fig:s8}
 \end{figure}
 
 %----------------------------------------------------------------------------------------
-%	SECTION 5
+%	QUESTION 3
 %----------------------------------------------------------------------------------------
+\section{Remarks on the grammar}
 
-\section{Discussion of Experimental Uncertainty}
-
-The accepted value (periodic table) is \SI{24.3}{\gram\per\mole} \cite{Smith:2012qr}. The percentage discrepancy between the accepted value and the result obtained here is 1.3\%. Because only a single measurement was made, it is not possible to calculate an estimated standard deviation.
-
-The most obvious source of experimental uncertainty is the limited precision of the balance. Other potential sources of experimental uncertainty are: the reaction might not be complete; if not enough time was allowed for total oxidation, less than complete oxidation of the magnesium might have, in part, reacted with nitrogen in the air (incorrect reaction); the magnesium oxide might have absorbed water from the air, and thus weigh ``too much." Because the result obtained is close to the accepted value it is possible that some of these experimental uncertainties have fortuitously cancelled one another.
+\begin{description}
+	\item[Design of the grammar rules]
+	\item[Positive aspects]
+	\item[Negative aspects]
+	
+	\begin{enumerate}
+		\item
+		\textbf{Redundancy of rules in the verbal domain}
+		
+		There is a redundancy in the treatment of ditransitive verb phrases. \emph{VPo} an \emph{VPio} are two nodes which expand in the exact same way:
+		\begin{center}
+			
+			\emph{VPo $\rightarrow$ Vdt NP} and \emph{VPio $\rightarrow$ Vdt NP}.
+			
+		\end{center}
+		and therefore there is no difference between them within the grammar. From a linguistic point of view this separation might have a motivation. The ditransitive verb and its direct object are represented by \emph{Po}, while \emph{VPio} is a unit consisting of a ditransitive verb and its indirect object. As valid linguistic distinction as it might be, it does not need to be included in simple grammar like the one discussed here. In particular, no use is made of the distinction between that would limit overgenration. If that was the case, then having both non-terminals would be a valid design choice. For instance, one might consider putting some restrictions on what kinds of NP can be direct or indirect objects.
+		The needless distinction between \emph{VPo} an \emph{VPio} propagates up to the topmost VP expansion rules. As a result, there are more VP-related rules than necessary. The grammar contains
+		\begin{center}
+			
+			\emph{VP $\rightarrow$ VPi $\vert$ VPt $\vert$ VPdt $\vert$ Mod VP $\vert$ VP Adv $\vert$ VP PP}
+			
+			\emph{VPdt $\rightarrow$ VPo PP}
+			
+			\emph{VPdt $\rightarrow$ VPio NP}
+			
+			\emph{VPo $\rightarrow$ Vdt NP}
+			
+			\emph{VPio $\rightarrow$ Vdt NP}
+			
+		\end{center}
+		but it could have contained as little as three rules instead:
+		
+		\begin{center}
+			
+			\emph{VP $\rightarrow$ VPi $\vert$ VPt $\vert$ VPdt $\vert$ Mod VP $\vert$ VP Adv $\vert$ VP PP}
+			
+			\emph{VPdt $\rightarrow$ VPd NP $\vert$ VPd PP}
+			
+			\emph{VPd $\rightarrow$ Vdt NP}
+			
+		\end{center}
+		
+		\item
+		\textbf{Redundancy of rules in the nominal domain}
+		
+		Similarly, the NP0 non-terminal node seems redundant. It's purpose is to allow for recursive generation of prepositional phrases following a noun phrase. This can be achieved by accounting for this kind of recursion within one of the existinf NP rules. We could propose:
+		
+		\begin{center}
+			
+			NP $\rightarrow$ PropN $\vert$ Pro $\vert$ NP1 $\vert$ NP PP
+			
+			NP1 $\rightarrow$ Det N2sc $\vert$ N2mp $\vert$ Sc $\vert$ NP1 PP
+			
+		\end{center}
+		
+		The first option has the advantage of allowing for proper names and pronouns to be modified by prepositional phrases, which could be desirable in a more comprehensive grammar, however is not necessary for the grammar at hand. The second proposition is more conservative in that it would not lead to generating any string the original grammar doesn't. The 
+		\begin{center}
+			
+			\emph{NP0 $\rightarrow$ NP1 $\vert$ NP0 PP}
+			
+		\end{center}
+		rule expands to an \emph{NP1} followed by an arbitrary number of \emph{PPs}. The same effect will be achieved by adding the \emph{NP1 -> NP1 PP} expansion, with the benefit of reducing the number of non-terminals.
+		One might argue that the \emph{NP0} node corresponds approximately to an X' node in X-bar syntax, and hence is theoretically justified. This, however, would need to mean that PPs to the right of the head noun are adjuncts rather than complements of that noun, which is not true. [TODO citation]
+		
+		\item
+		\textbf{Dobtfull usefulness of the \textit{Sq} node}
+		
+		The \emph{Sq} node serves no purpose other than to reflect the conceptual relation between \emph{Sqyn} and \emph{Swhadv}, namely the fact both are non-terminals expanding into questions. This, however, represents only a superficial, if not mistaken, grammatical insight. In fact wh-questions and auxiliary-inversion questions are represented by very different structures (WH-phrases and Aux-phrases respectively[TODO citation]). If the motivation for including the \emph{Sq} node it linguistic, then the reasons seem insufficient.
+		If, one the other hand, the node was included in the grammar to simplify the expansion of \emph{S}, then by analogy we should also include
+		\begin{center}
+			
+			\emph{Sd $\rightarrow$ Sdec $\vert$ Simp}
+			
+		\end{center}an change the expansion of \emph{S} to
+		\begin{center}
+			
+			\emph{S $\rightarrow$ Sd '.' $\vert$ Sq '?'}
+			
+		\end{center}
+		
+		\item
+		\textbf{Lower case and capitalized versions of terminals.}
+		
+		It does not seem necessary to include lower case and capitalized versions of the same terminals. In the sample sentences we have seen \textit{Book, Can}, and \textit{Why} being capitalized to account for their sentence-initial positions. instead of duplicating lexical items, we could simply capitalize  the first word of a generated sentence and ignore sentence-initial capitalization during parsing.
+		There would be no ill effects of such a change, since every generated sentence is, by definition, grammatical. Every word which happens to be initial in a sentence produced by the grammar is allowed to be there. The additional confirmation of this fact in form of the word's capitalised version being present in the grammar is unnecessary.
+	\end{enumerate}
+	\item[Overgeneration]\newline
+	\begin{enumerate}
+		\item
+		\textbf{Lack of subject-verb agreement}
+		
+		There’s distinction between single/count and plural/mass nouns, but no corresponding distinction in the verbal domain. The problem is somewhat masked by the fact that most of the included verbs are in past tense, where in English there are no subject-verb agreement phenomena. Nevertheless, we can see that the grammar would accept  \emph{*the fork book a flight.}, a sentence which ignores verb conjugation requirements.
+		
+		\item
+		\textbf{Treating VP as full sentences}
+		
+		The rules:
+		\begin{center}
+			
+			S $\rightarrow$ Simp ‘.’
+			
+			Simp $\rightarrow$ VP
+			
+		\end{center}
+		imply that any \emph{VP} can be a grammatical sentence on its own. This, however, is true only of \emph{VP} in imperative mood. The grammar, however, allows for treating any \emph{VP}, e.g. \emph{*ate today}, as a full sentence. Solving this problem is not possible without substantially expanding the grammar. We would have to distinguish between infinitival and inflected forms of verbs, and extend the set of possible expansions of \emph{VP} accordingly. We could then state that \emph{Simp} subcategories for \emph{VPs} whose head is an infinitival form of a verb. Therefore, we would need the following rules:
+		\begin{center}
+			
+			Vt_inf $\rightarrow$ ‘Book’ $\vert$ ‘Tell’ $\vert$ …
+			
+			VPi_inf $\rightarrow$ ‘Eat' $\vert$ …
+			
+			VPt_inf $\rightarrow$ Vt_inf NP $\vert$ VPt_inf Adv $\vert$ VPt_inf PP
+			
+			VP $\rightarrow$ VPt_inf
+			
+			Simp $\rightarrow$ VPt_inf $\vert$ VPi_inf
+			
+		\end{center}
+		Even then, additional restrictions would be needed to account for characteristics of the imperative mood, e.g. the fact that the second person pronoun needs to be in its reflexive form when used as a direct object of the matrix verb [TODO citation] . Otherwise the grammar would generate sentences such as \emph{*Book you a flight to London.} instead of grammatical \emph{*Book yourself a flight to London.}
+		
+		\item
+		\textbf{Case agreement}
+		
+		The grammar does not account for case subcategorisation requirements of verbs. The only corner of the modern English syntax which still exhibits case phenomena is the pronoun system[TODO citation], however the grammar does not include a \emph{ProNom} and a \emph{ProAcc} pre-terminals. Having no distinction between nominative and accusative forms leads to admitting non-grammatical sentences, e.g.\emph{*Mary gave \textbf{he} a nice salad.} instead of \emph{Mary gave \textbf{him} a nice salad.}
+		
+		\item
+		\textbf{Verb and noun subcategorization for pronouns}
+		
+		Verbs an nouns tend to co-occur with particular pronouns more often than with others. However, the grammar does not account for this preference. For instance, one can \emph{eat with a fork}, \emph{eat with Mary}, or have a \emph{flight to London}, but the grammar also allows for having a \emph{*salad to fork} and booking a \emph{*flight with NYC.}
+		
+		\item
+		\textbf{Multiple modals}
+		
+		The grammar allows for an unlimited number of modals to proceed a \emph{VP}. This can lead to generating sentences such as \emph{*Can will can can John book a flight?}. However, English limits the acceptable number (up to 4, depending on dialetct), orderings (evidential, epistemic, deontic), and identity (\emph{might} or \emph{may} being the most commonly first in the sequence (Di Paolo 1989)) of verbs in multiple modal constructions. In order to capture these restrictions we would need a whole series of serially connected expansion rules, each introducing one modal of a certain type.
+	\end{enumerate}
+\end{description}
 
 %----------------------------------------------------------------------------------------
-%	SECTION 6
-%----------------------------------------------------------------------------------------
-
-\section{Answers to Definitions}
-
-\begin{enumerate}
-\begin{item}
-The \emph{atomic weight of an element} is the relative weight of one of its atoms compared to C-12 with a weight of 12.0000000$\ldots$, hydrogen with a weight of 1.008, to oxygen with a weight of 16.00. Atomic weight is also the average weight of all the atoms of that element as they occur in nature.
-\end{item}
-\begin{item}
-The \emph{units of atomic weight} are two-fold, with an identical numerical value. They are g/mole of atoms (or just g/mol) or amu/atom.
-\end{item}
-\begin{item}
-\emph{Percentage discrepancy} between an accepted (literature) value and an experimental value is
-\begin{equation*}
-\frac{\mathrm{experimental\;result} - \mathrm{accepted\;result}}{\mathrm{accepted\;result}}
-\end{equation*}
-\end{item}
-\end{enumerate}
-
-
-%----------------------------------------------------------------------------------------
-%	SECTION 7
+%	QUESTION 7
 %----------------------------------------------------------------------------------------
 
 \section{Ambiguity Analysis}
