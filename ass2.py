@@ -80,27 +80,13 @@ chart2=CKY(grammar2)
 # _anywhere in this file_ (you are encouraged to use it in preparing
 # your report).
 
-# Q4: Uncomment this once you've completed Q4
+# Q5: Uncomment this once you've completed Q5
 # chart.parse(tokenise("the frogs swim"),True)
-# Q5 Uncomment the next three once when you're working on Q5
-# chart.parse(tokenise("fish fish"))
-# chart.pprint()
-# chart.parse(tokenise("fish fish"),True)
+# Q6 Uncomment the next three once when you're working on Q6
+#chart.parse(tokenise("fish fish"))
+#chart.pprint()
+#chart.parse(tokenise("fish fish"),True)
 # Q7
-for s in [
-		  "John gave a book to Mary.",
-          "John gave Mary a book.",
-          "John gave Mary a nice drawing book.",
-          "John ate salad with mushrooms with a fork.",
-          "Book a flight to NYC.",
-          "Can you book a flight to London?",
-          "Why did John book the flight?",
-          "John told Mary that he will book a flight today."
-          ]:
-    print s, chart2.parse(tokenise(s))
-    chart2.pprint();
-
-# Q8
 # for s in ["John gave a book to Mary.",
 #           "John gave Mary a book.",
 #           "John gave Mary a nice drawing book.",
@@ -110,7 +96,18 @@ for s in [
 #           "Why did John book the flight?",
 #           "John told Mary that he will book a flight today."]:
 #     print s, chart2.parse(tokenise(s))
-#     print chart2.first_tree().pprint()
+
+# Q8
+for s in ["John gave a book to Mary.",
+          "John gave Mary a book.",
+          "John gave Mary a nice drawing book.",
+          "John ate salad with mushrooms with a fork.",
+          "Book a flight to NYC.",
+          "Can you book a flight to London?",
+          "Why did John book the flight?",
+          "John told Mary that he will book a flight today."]:
+    print s, chart2.parse(tokenise(s))
+    print chart2.first_tree().pprint()
 
 # Q9
 # for s in [...]:

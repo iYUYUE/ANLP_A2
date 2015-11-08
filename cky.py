@@ -1,5 +1,6 @@
 import sys,re
 import nltk
+from nltk.tree import *
 from collections import defaultdict
 import cfg_fix
 from cfg_fix import parse_grammar, CFG
@@ -71,7 +72,7 @@ class CKY:
              self.matrix.append(row)
         self.unary_fill()
         self.binary_scan()
-        return self.grammar.start() in self.matrix[0][self.n-1].labels()
+        return self.grammar.start() in self.matrix[0][self.n-1].getLabelList('symbol')
 
     def unary_fill(self):
         '''Determine the possible non-terminals 
@@ -83,12 +84,12 @@ class CKY:
             cell=self.matrix[r][r+1]
             # initialize the cell
             word=self.words[r]
-            cell.addLabel(word)
+            cell.addLabel(Label(symbol=word))
             # recursively update the cell
             cell.unary_update(word,self.unary)
             # print out the possible non-terminals for each cell (terminal)
             if self.verbose:
-                print "Unary branching rules at node (%s,%s):%s"%(r,r+1,cell.labels())
+                print "Unary branching rules at node (%s,%s):%s"%(r,r+1,cell.getLabelList('symbol'))
 
     def binary_scan(self):
         '''The heart of the parser:
@@ -110,17 +111,20 @@ class CKY:
             print "Binary branching rules for %s--%s--%s:"%(start,mid,end),
         cell=self.matrix[start][end]
         # search from the given cells
-        for s1 in self.matrix[start][mid].labels():
-            for s2 in self.matrix[mid][end].labels():
+        for s1 in self.matrix[start][mid].getLabelList('symbol'):
+            for s2 in self.matrix[mid][end].getLabelList('symbol'):
                 # for a binary branching rule match
                 if (s1,s2) in self.binary:
                     # add all possible non-terminals from the lhs of the rule
                     for s in self.binary[(s1,s2)]:
-                        cell.addLabel(s)
-                        # add more possible non-terminals 
-                        # because, in the grammar, there are unary rules 
-                        # that can produce non-terminals
-                        cell.unary_update(s,self.unary)
+                        if s not in cell.getLabelList('symbol'):
+                            cell.addLabel(Label(symbol=s, start=start, end=end, rhs=[(mid,(s1,s2))]))
+                            # add more possible non-terminals 
+                            # because, in the grammar, there are unary rules 
+                            # that can produce non-terminals
+                            cell.unary_update(s,self.unary)
+                        else:
+                            cell.updateRHS('symbol',s,(mid,(s1,s2)))
                         if self.verbose:
                             print " %s -> %s %s"%(s, s1,s2),
         if self.verbose:
@@ -165,6 +169,34 @@ class CKY:
                 row_strs=['' for c in range(r)]
                 row_strs+=[wtp(l,print_matrix[r][c],mrh) for c in range(self.n-(r+1))]
                 print row_fmt%tuple(row_strs)
+
+
+    def first_tree(self):
+        """
+        Construct an NLTK Tree for the 'first' complete parse
+        as S out of all of the parses represented in the top-right-hand corner 
+        of the chart's matrix after a successful run.
+        """
+        return self.update_trees(0,len(self.matrix[0])-1,'S')
+
+    def update_trees(self,start,end,lhs):
+        # print str(start) + '|' + str(end) + '|' + N2S(lhs)
+        label = self.matrix[start][end].searchLabelList('symbol',lhs)
+        if not hasattr(label,'rhs'):
+            return self.update_children(start,end,lhs,'',True)
+        else:
+            for r in label.rhs:
+                return self.update_children(start,end,lhs,r,False)
+
+
+    def update_children(self,start,end,lhs,rhs,terminal):
+        if(terminal):
+                return lhs
+        mid = rhs[0]
+        if(mid<0):
+            return Tree(lhs,[self.update_trees(start,end,rhs[1])])
+        else:
+            return Tree(lhs,[self.update_trees(start,mid,rhs[1][0]),self.update_trees(mid,end,rhs[1][1])])
                  
 def wtp(l,subrows,maxrows):
     '''figure out what row or filler from within a cell
@@ -188,7 +220,7 @@ class Cell:
         '''Try to format labels in a rectangule,
         aiming for max-width as given, but only
         breaking between labels'''
-        labs=self.labels()
+        labs=self.getLabelList('symbol')
         n=len(labs)
         res=[]
         if n==0:
@@ -222,17 +254,46 @@ class Cell:
         # if the symbol is a right hand-side of a unary production rule
         if symbol in unaries:
         	# add each of possible corresponding left hand-sides to the cell's labels
-            # for parent in unaries[symbol]:
-                if parent not in self._labels:
-                    self.addLabel(parent)
+            for parent in unaries[symbol]:
+                if parent not in self.getLabelList('symbol'):
+                    self.addLabel(Label(symbol=parent, rhs=[(-1,symbol)]))
                     # a recursive call is needed because in the grammar not all
                     # unary productions are terminal productions
                     self.unary_update(parent,unaries)
+                else:
+                    self.updateRHS('symbol',parent,symbol)
+
+    """
+    Custom Utility Functions for Q7 & Q8
+    """
+
+    def getLabelList(self,att):
+        """
+        Get lable list from Label structure list with specified attribute
+        """
+        tmpList = []
+        for item in self._labels:
+            tmpList.append(getattr(item,att))
+        return tmpList
+    
+    def searchLabelList(self,att,value):
+        for item in self._labels:
+            # print N2S(getattr(item,att)) + '|' + N2S(value)
+            if(N2S(getattr(item,att))==N2S(value)):
+                return item
+
+    def updateRHS(self,att,value,newRHS):
+        self.searchLabelList(att,value).rhs.append(newRHS)
+
+def N2S(n):
+    """
+    Nonterminal to String
+    """
+    if type(n) is nltk.Nonterminal:
+        return n.unicode_repr()
+    else:
+        return n
 
 class Label:
-    def __init__(self,
-                 # Fill in here
-                 ):
-        pass # Replace as appropriate
-
-    # Add more methods as required
+    def __init__(self, **kwds):
+        self.__dict__.update(kwds)
