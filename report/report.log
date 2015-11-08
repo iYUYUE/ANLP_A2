@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.20)  6 NOV 2015 07:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.20)  8 NOV 2015 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1104,47 +1104,104 @@ File: siunitx-abbreviations.cfg 2015/10/15 v2.6m siunitx: Abbreviated units
 )
 \c__siunitx_mathsf_int=\count224
 \c__siunitx_mathtt_int=\count225
- [1
+ <../s1.png, id=1, 286.671pt x 328.1058pt>
+File: ../s1.png Graphic file (type png)
+ <use ../s1.png>
+Package pdftex.def Info: ../s1.png used on input line 103.
+(pdftex.def)             Requested size: 137.9979pt x 157.94958pt.
 
-{/usr/local/texlive/2015basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] <p
-laceholder.jpg, id=16, 351.3125pt x 193.72375pt>
-File: placeholder.jpg Graphic file (type jpg)
+<../s2.png, id=3, 286.671pt x 296.7888pt>
+File: ../s2.png Graphic file (type png)
+ <use ../s2.png>
+Package pdftex.def Info: ../s2.png used on input line 109.
+(pdftex.def)             Requested size: 137.9979pt x 142.87363pt.
 
-<use placeholder.jpg>
-Package pdftex.def Info: placeholder.jpg used on input line 181.
-(pdftex.def)             Requested size: 224.2479pt x 123.66057pt.
- [2 <./placeholder.jpg>] [3] (./report.bbl) [4]
-(./report.aux)
+<../s3.png, id=4, 334.851pt x 390.258pt>
+File: ../s3.png Graphic file (type png)
+ <use ../s3.png>
+Package pdftex.def Info: ../s3.png used on input line 115.
+(pdftex.def)             Requested size: 137.9979pt x 160.83453pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../s4.png, id=5, 394.1124pt x 421.575pt>
+File: ../s4.png Graphic file (type png)
+ <use ../s4.png>
+Package pdftex.def Info: ../s4.png used on input line 121.
+(pdftex.def)             Requested size: 137.9979pt x 147.61134pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../s5.png, id=6, 286.671pt x 328.1058pt>
+File: ../s5.png Graphic file (type png)
+ <use ../s5.png>
+Package pdftex.def Info: ../s5.png used on input line 127.
+(pdftex.def)             Requested size: 137.9979pt x 157.94958pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../s6.png, id=7, 311.7246pt x 390.258pt>
+File: ../s6.png Graphic file (type png)
+ <use ../s6.png>
+Package pdftex.def Info: ../s6.png used on input line 133.
+(pdftex.def)             Requested size: 137.9979pt x 172.7621pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../s7.png, id=8, 286.671pt x 390.258pt>
+File: ../s7.png Graphic file (type png)
+ <use ../s7.png>
+Package pdftex.def Info: ../s7.png used on input line 139.
+(pdftex.def)             Requested size: 137.9979pt x 187.86955pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../s8.png, id=9, 460.6008pt x 576.7146pt>
+File: ../s8.png Graphic file (type png)
+ <use ../s8.png>
+Package pdftex.def Info: ../s8.png used on input line 145.
+(pdftex.def)             Requested size: 137.9979pt x 172.78691pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[1
+
+{/usr/local/texlive/2015basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <..
+/s1.png> <../s2.png>] [2 <../s3.png> <../s4.png>] [3 <../s5.png> <../s6.png>] [
+4 <../s7.png> <../s8.png>] [5] [6] [7]
+No file report.bbl.
+[8] (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 16365 strings out of 494501
- 320081 string characters out of 6167029
- 364194 words of memory out of 5000000
- 19460 multiletter control sequences out of 15000+600000
- 13255 words of font info for 48 fonts, out of 8000000 for 9000
+ 16371 strings out of 494501
+ 320080 string characters out of 6167029
+ 364214 words of memory out of 5000000
+ 19472 multiletter control sequences out of 15000+600000
+ 8490 words of font info for 30 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 40i,13n,44p,10434b,810s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,6n,44p,10434b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 0.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mbx12.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmcsc10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015basic/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015basic/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015basic/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015basic/texmf
--dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (4 pages, 160747 bytes).
+cm/cmbxti10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb>
+Output written on report.pdf (8 pages, 555480 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 80 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

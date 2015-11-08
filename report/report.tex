@@ -238,7 +238,7 @@
 		It does not seem necessary to include lower case and capitalized versions of the same terminals. In the sample sentences we have seen \textit{Book, Can}, and \textit{Why} being capitalized to account for their sentence-initial positions. instead of duplicating lexical items, we could simply capitalize  the first word of a generated sentence and ignore sentence-initial capitalization during parsing.
 		There would be no ill effects of such a change, since every generated sentence is, by definition, grammatical. Every word which happens to be initial in a sentence produced by the grammar is allowed to be there. The additional confirmation of this fact in form of the word's capitalised version being present in the grammar is unnecessary.
 	\end{enumerate}
-	\item[Overgeneration]\newline
+	\item[Overgeneration]
 	\begin{enumerate}
 		\item
 		\textbf{Lack of subject-verb agreement}
@@ -259,15 +259,15 @@
 		imply that any \emph{VP} can be a grammatical sentence on its own. This, however, is true only of \emph{VP} in imperative mood. The grammar, however, allows for treating any \emph{VP}, e.g. \emph{*ate today}, as a full sentence. Solving this problem is not possible without substantially expanding the grammar. We would have to distinguish between infinitival and inflected forms of verbs, and extend the set of possible expansions of \emph{VP} accordingly. We could then state that \emph{Simp} subcategories for \emph{VPs} whose head is an infinitival form of a verb. Therefore, we would need the following rules:
 		\begin{center}
 			
-			Vt_inf $\rightarrow$ ‘Book’ $\vert$ ‘Tell’ $\vert$ …
+			$Vt_inf$ $\rightarrow$ ‘Book’ $\vert$ ‘Tell’ $\vert$ …
 			
-			VPi_inf $\rightarrow$ ‘Eat' $\vert$ …
+			$VPi_inf$ $\rightarrow$ ‘Eat' $\vert$ …
 			
-			VPt_inf $\rightarrow$ Vt_inf NP $\vert$ VPt_inf Adv $\vert$ VPt_inf PP
+			$VPt_inf$ $\rightarrow$ $Vt_inf$ NP $\vert$ $VPt_inf$ Adv $\vert$ $VPt_inf$ PP
 			
-			VP $\rightarrow$ VPt_inf
+			VP $\rightarrow$ $VPt_inf$
 			
-			Simp $\rightarrow$ VPt_inf $\vert$ VPi_inf
+			Simp $\rightarrow$ $VPt_inf$ $\vert$ $VPi_inf$
 			
 		\end{center}
 		Even then, additional restrictions would be needed to account for characteristics of the imperative mood, e.g. the fact that the second person pronoun needs to be in its reflexive form when used as a direct object of the matrix verb [TODO citation] . Otherwise the grammar would generate sentences such as \emph{*Book you a flight to London.} instead of grammatical \emph{*Book yourself a flight to London.}
