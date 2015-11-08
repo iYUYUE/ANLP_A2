@@ -222,7 +222,9 @@ class Cell:
         # if the symbol is a right hand-side of a unary production rule
         if symbol in unaries:
         	# add each of possible corresponding left hand-sides to the cell's labels
-            # for parent in unaries[symbol]:
+            for parent in unaries[symbol]:
+                # only add labels that is not in the cell already
+                # to avoid the exponential cost of the recognition
                 if parent not in self._labels:
                     self.addLabel(parent)
                     # a recursive call is needed because in the grammar not all
