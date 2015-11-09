@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.10.20)  9 NOV 2015 11:37
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.10.20)  9 NOV 2015 14:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3297,25 +3297,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 407--408
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 417--418
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 433--434
+
+ []
+
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 499--500
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--495
 
  []
 
 [10]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 505.
-
- (/usr/local/texlive/2015basic/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 505.
-
-Underfull \hbox (badness 10000) in paragraph at lines 526--527
+Underfull \hbox (badness 10000) in paragraph at lines 522--523
 
  []
 
-[11] (./report.bbl) [12] (./report.aux)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 528.
+
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 528.
+ [11]
+Underfull \hbox (badness 10000) in paragraph at lines 549--550
+
+ []
+
+(./report.bbl [12]) [13] (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -3329,4 +3358,4 @@ Here is how much of TeX's memory you used:
  319 hyphenation exceptions out of 8191
  55i,16n,54p,10434b,1496s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (12 pages).
+Output written on report.pdf (13 pages).

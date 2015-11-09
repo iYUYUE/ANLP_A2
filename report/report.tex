@@ -414,75 +414,98 @@ def maybe_build(self, start, mid, end):
 
 \subsection{"John gave a book to Mary."}
 
-\begin{description}
-	\item[Distinct Parse(s):]
-	3
-	\item[Ambiguity Source:]
-	
-\end{description}
+\textbf{Distinct Parse(s):} 3\\
+
+\textbf{Ambiguity Source:} 3 different \textbf{VP} found in (1,6) can pair up with the \textbf{NP} in (0,1) to form \textbf{Sdecl}. The \textbf{VP} came from the following rules:
+
+\begin{center}
+	\textbf{\emph{VP $\rightarrow$ VP(1,4) PP(4,6)}\\
+	\emph{VP $\rightarrow$ VPdt $\rightarrow$ VPo(1,4) PP(4,6)}\\
+	\emph{VP $\rightarrow$ VPt $\rightarrow$ Vt(1,2) NP(2,6)}}
+\end{center}
 
 \subsection{"John gave Mary a book."}
 
-\begin{description}
-	\item[Distinct Parse(s):]
-	1
-	\item[Ambiguity Source:]
-	
-\end{description} 
+\textbf{Distinct Parse(s):} 1
 
 \subsection{"John gave Mary a nice drawing book."}
 
-\begin{description}
-	\item[Distinct Parse(s):]
-	2
-	\item[Ambiguity Source:]
-	
-\end{description} 
+\textbf{Distinct Parse(s):} 2\\
+
+\textbf{Ambiguity Source:} 2 different \textbf{N2sc} found in (4,7) can pair up with the \textbf{Det} in (3,4) to form \textbf{NP1}. The \textbf{N2sc} came from the following rules:
+
+\begin{center}
+\emph{N2sc $\rightarrow$ Adj(4,5) N2sc(5,7)}\\
+\textbf{\emph{N2sc(5,7) $\rightarrow$ N3(5,6) Nsc(6,7)}\\
+\emph{N2sc(5,7) $\rightarrow$ Adj(5,6) N2sc(6,7)}}
+\end{center}
 
 \subsection{"John ate salad with mushrooms with a fork."}
 
-\begin{description}
-	\item[Distinct Parse(s):]
-	5
-	\item[Ambiguity Source:]
+\textbf{Distinct Parse(s):} 5\\
+
+\textbf{Ambiguity Source:} 5 different \textbf{VP} found in (1,8) can pair up with the \textbf{NP} in (0,1) to form \textbf{Sdecl}. The \textbf{VP} came from the following rules:
+
+\begin{center}
+	\textbf{\emph{VP $\rightarrow$ VP(1,3) PP(3,8)}}\\
 	
-\end{description}
+	\emph{VP $\rightarrow$ VP(1,5) PP(5,8)}
+	
+	\textbf{\emph{VP(1,5) $\rightarrow$ VP(1,3) PP(3,5)}\\
+	\emph{VP(1,5) $\rightarrow$ VPt $\rightarrow$ Vt(1,2) NP(2,5)}}\\
+
+	\emph{VP $\rightarrow$ VPt $\rightarrow$ Vt(1,2) NP(2,8) $\rightarrow$ NP0}\\
+	\textbf{\emph{NP0 $\rightarrow$ NP0(2,3) PP(3,8)}\\
+	\emph{NP0 $\rightarrow$ NP0(2,5) PP(5,8)}}
+\end{center}
+
 
 \subsection{"Book a flight to NYC."}
 
-\begin{description}
-	\item[Distinct Parse(s):]
-	2
-	\item[Ambiguity Source:]
-	
-\end{description}
+\textbf{Distinct Parse(s):} 2\\
+
+\textbf{Ambiguity Source:} 2 different \textbf{Simp} found in (0,5) can pair up with the \textbf{'.'} in (5,6) to form \textbf{S}. The \textbf{Simp} came from the following rules:
+
+\begin{center}
+	\emph{Simp $\rightarrow$ VP}\\
+	\textbf{\emph{VP $\rightarrow$ VP(0,3) PP(3,5)}\\
+	\emph{VP $\rightarrow$ VPt $\rightarrow$ Vt(0,1) NP(1,5)}}
+\end{center}
 
 \subsection{"Can you book a flight to London?"}
 
-\begin{description}
-	\item[Distinct Parse(s):]
-	2
-	\item[Ambiguity Source:]
-	
-\end{description}
+\textbf{Distinct Parse(s):} 2\\
+
+\textbf{Ambiguity Source:} 2 different \textbf{Sq} found in (0,7) can pair up with the \textbf{'?'} in (7,8) to form \textbf{S}. The \textbf{Sq} came from the following rules:
+
+\begin{center}
+	\emph{Sq $\rightarrow$ Sqyn $\rightarrow$ Mod(0,1) Sdecl(1,7)}\\
+	\emph{Sdecl(1,7) $\rightarrow$ NP(1,2) VP(2,7)}\\
+	\textbf{\emph{VP(2,7) $\rightarrow$ VP(2,5) PP(5,7)}\\
+	\emph{VP(2,7) $\rightarrow$ VPt $\rightarrow$ Vt(2,3) NP(3,7)}}
+\end{center}
 
 \subsection{"Why did John book the flight?"}
 
-\begin{description}
-	\item[Distinct Parse(s):]
-	1
-	\item[Ambiguity Source:]
-	
-\end{description}
+\textbf{Distinct Parse(s):} 1
 
 \subsection{"John told Mary that he will book a flight today."}
 
-\begin{description}
-	\item[Distinct Parse(s):]
-	3
-	\item[Ambiguity Source:]
+\textbf{Distinct Parse(s):} 3\\
+
+\textbf{Ambiguity Source:} 3 different \textbf{Sdecl} found in (0,10) can pair up with the \textbf{'.'} in (10,11) to form \textbf{S}. The \textbf{Sdecl} came from the following rules:
+
+\begin{center}
+	\emph{Sdecl $\rightarrow$ NP(0,1) VP(1,10)}\\
+	\textbf{\emph{VP(1,10) $\rightarrow$ VP(1,9) Adv(9,10)}}\\
+	\emph{VP(1,10) $\rightarrow$ VPdt $\rightarrow$ VPio(1,3) NP(3,10)}\\
 	
-\end{description}
+	\emph{NP(3,10) $\rightarrow$ NP0 $\rightarrow$ NP1 $\rightarrow$ Sc $\rightarrow$ Subconj(3,4) Sdecl(4,10)}\\
+	\emph{Sdecl(4,10) $\rightarrow$ NP(4,5) VP(5,10)}\\
+	\textbf{\emph{VP(5,10) $\rightarrow$ Mod(5,6) VP(6,10)}\\
+	\emph{VP(5,10) $\rightarrow$ VP(5,9) Adv(9,10)}}
+\end{center}
+
 
 
 %----------------------------------------------------------------------------------------
