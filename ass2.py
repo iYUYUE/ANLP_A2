@@ -2,7 +2,7 @@
 import re
 import cfg_fix
 from cfg_fix import parse_grammar, Tree
-from cky import CKY
+from cky8 import CKY
 
 def tokenise(tokenstring):
   '''Split a string into a list of tokens, treating punctuation as
