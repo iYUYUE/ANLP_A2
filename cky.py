@@ -44,10 +44,11 @@ class CKY:
 
     def parse(self,tokens,verbose=False):
         '''Initialise a matrix from the sentence,
-        then parse it
+        then parse it across the middle and upper-right diagonals
         Optional verbose argument controls debugging output, defaults to False '''
         self.verbose=verbose
         self.words = tokens
+        # size of the matrix
         self.n = len(self.words)+1
         self.matrix = []
         # We index by row, then column
@@ -58,18 +59,22 @@ class CKY:
         # 2          X
         # ...
         for r in range(self.n-1):
-             # rows
+             # fill in rows
              row=[]
              for c in range(self.n):
-                 # columns
+                 # fill in columns
                  if c>r:
                      # This is one we care about, add a cell
                      row.append(Cell())
                  else:
                      # just a filler
                      row.append(None)
+             # add the row
              self.matrix.append(row)
+        # fill in the middle diagonal
         self.unary_fill()
+        # proceed across the upper-right diagonals 
+        # in increasing order of constituent length
         self.binary_scan()
         return self.grammar.start() in self.matrix[0][self.n-1].labels()
 
