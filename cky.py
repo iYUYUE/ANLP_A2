@@ -180,6 +180,9 @@ class CKY:
         return self.update_trees(0,len(self.matrix[0])-1,'S')
 
     def update_trees(self,start,end,lhs):
+        """
+        Update all the possible subtrees of the give label in a cell
+        """
         # print str(start) + '|' + str(end) + '|' + N2S(lhs)
         label = self.matrix[start][end].searchLabelList('symbol',lhs)
         if not hasattr(label,'rhs'):
@@ -190,6 +193,9 @@ class CKY:
 
 
     def update_children(self,start,end,lhs,rhs,terminal):
+        """
+        Construct NLTK tree nodes according to given rules
+        """
         if(terminal):
                 return lhs
         mid = rhs[0]
