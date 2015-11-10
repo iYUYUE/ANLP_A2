@@ -66,7 +66,9 @@
 \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
 
 \usepackage{tikz}
-\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+\usepackage{float}
 
 %\usepackage{times} % Uncomment to use the Times New Roman font
 
@@ -649,7 +651,7 @@ List of parameters:
 
 The Label class can take different number of parameters depending on where the label came from, such as the left-hand-sides of rules and words from the input string. For instance, if a symbol was added according to a unary rule, the row number and column number will be the same as its parent label which we already knew. For the labels of words, which will be the leaf nodes of a parse tree, the value of right-hand-side will be omitted (not available).
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}\hline
 		\diagbox[width=12em]{\\Parameter}{\\Source Type}&
