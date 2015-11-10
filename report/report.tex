@@ -419,6 +419,46 @@ def unary_update(self,symbol,unaries):
 
 \section{Comments for CKY.parse \& CKY.maybe\_build}
 \begin{lstlisting}
+def parse(self,tokens,verbose=False):
+	"""Initialise a matrix from the sentence,
+	then parse it across the middle and upper-right diagonals
+	Optional verbose argument controls debugging output, defaults to False"""
+	
+	self.verbose=verbose
+	self.words = tokens
+	# size of the matrix, which equals to number of gaps between words
+	self.n = len(self.words)+1
+	self.matrix = []
+	# We index by row, then column
+	#  So Y below is 1,2 and Z is 0,3
+	#    1   2   3  ...
+	# 0  X   X   Z
+	# 1      Y   X
+	# 2          X
+	# ...
+	# create as many rows as there are words
+	for r in range(self.n-1):
+		# create a row
+		row=[]
+		for c in range(self.n):
+			# populate the row with cells
+			if c>r:
+				# create only cells corresponding to the upper right half
+				# of the matrix
+				row.append(Cell())
+			else:
+				# rest of the matrix is to be filled with None instead of Cell
+				row.append(None)
+		# add the row to the matrix
+		self.matrix.append(row)
+	# fill in the middle diagonal
+	self.unary_fill()
+	# proceed to fill subsequent upper-right diagonals 
+	# in increasing order of constituent length
+	self.binary_scan()
+	# if the last cell in row 0 contains the start symbol, return True
+	return self.grammar.start() in self.matrix[0][self.n-1].labels()
+
 def maybe_build(self, start, mid, end):
 	"""Search for the possible combinitions of 
 	   the symbols in two given cells (one from each) 
