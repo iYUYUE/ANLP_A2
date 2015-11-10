@@ -78,7 +78,7 @@ class CKY:
         # proceed to fill subsequent upper-right diagonals 
         # in increasing order of constituent length
         self.binary_scan()
-        # I don't really know what's happening here - maybe you do?
+        # if the last cell in row 0 contains the start symbol, return True
         return self.grammar.start() in self.matrix[0][self.n-1].labels()
 
     def unary_fill(self):
