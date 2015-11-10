@@ -124,10 +124,10 @@ So for example "I'm leaving." --> ["I","'m","leaving","."]'''
 	normalized_1 = re.sub(r"s'\b", "s's ", tokenstring)
 	# if ' is followed by more that 2 digits, it's not a year
 	# split into ' and digit string
-	normalized_2 = re.sub(r"'(\d{3})", r"' \1", regularized_1)
+	normalized_2 = re.sub(r"'(\d{3})", r"' \1", normalized_1)
 	# find all alphanumeric strings, 'digit-digit strings, 's/'d/'m etc. strings
 	# and single punctuation marks
-	return re.findall(r"[a-zA-Z\d]+|'\d\d\b|'[a-z]*|[,.?;:()-]", regularized_2)
+	return re.findall(r"[a-zA-Z\d]+|'\d\d\b|'[a-z]*|[,.?;:()-]", normalized_2)
 \end{lstlisting}
 %----------------------------------------------------------------------------------------
 %	QUESTION 2
@@ -472,6 +472,19 @@ def maybe_build(self, start, mid, end):
 	\emph{VP $\rightarrow$ VPt $\rightarrow$ Vt(1,2) NP(2,6)}}
 \end{center}
 
+\textbf{Interpretation of ambiguity:}\\
+{[}VP {[}VP John gave a book{]} {[}PP to Mary{]}{]}
+
+In this parse, \emph{John gave a book} is a full VP, and \emph{to Mary} is an additional modifier. This an analysis would be correct for a sentence such as \emph{John read a book on the couch}, where \emph{the couch} is not an argument of the verb. In case of \emph{give} both the NP and the PP are arguments.
+
+[VP [VPdt [VPo John gave a book] [PP to Mary]]]
+
+This is the most appropriate parse, in which \emph{give} has a direct object, \emph{a book}, and an indirect one, \emph{Mary}. The only VP in this analysis is the one which correctly encompasses all of the participants of the event.
+
+[VP [VPt [Vt John gave] [NP a book to Mary]]]
+
+This analysis incorrectly treats \emph{to Mary} as forming as a modifier of \emph{a book}. This structure would correctly describe a sentence such as \emph{John ate pasta with tuna}, where the PP really modifies the noun, and the verb really is transitive.
+
 \subsection{"John gave Mary a book."}
 
 \textbf{Distinct Parse(s):} 1
@@ -487,6 +500,15 @@ def maybe_build(self, start, mid, end):
 \textbf{\emph{N2sc(5,7) $\rightarrow$ N3(5,6) Nsc(6,7)}\\
 \emph{N2sc(5,7) $\rightarrow$ Adj(5,6) N2sc(6,7)}}
 \end{center}
+
+\textbf{Interpretation of ambiguity:}\\
+{[}N2sc {[}Adj drawing{]} {[}Nsc book{]}{]}
+
+The grammar lists \emph{drawing} as an adjective, so the unit \emph{drawing book} can be analysed as a noun modified by an adjective, in the way \emph{fragile} is a modifier in \emph{fragile cup}.
+
+{[}N2sc {[}N3 {[}N drawing{]}{]} {[}Nsc book{]}{]}
+
+In this parse both \emph{drawing} and \emph{book} are treated as nouns, and N2sc represents a noun-noun compound, in the way \emph{tea cup} is a compound of two nouns. This seems to be a correct interpretation, given how popular such structures are in English, and that there is no evidence of \emph{drawing} being an adjective (e.g. there are no comparative forms \emph{*a drawinger book }).
 
 \subsection{"John ate salad with mushrooms with a fork."}
 
@@ -507,6 +529,7 @@ def maybe_build(self, start, mid, end):
 	\emph{NP0 $\rightarrow$ NP0(2,5) PP(5,8)}}
 \end{center}
 
+\textbf{Interpretation of ambiguity:}\\
 
 \subsection{"Book a flight to NYC."}
 
@@ -520,6 +543,8 @@ def maybe_build(self, start, mid, end):
 	\emph{VP $\rightarrow$ VPt $\rightarrow$ Vt(0,1) NP(1,5)}}
 \end{center}
 
+\textbf{Interpretation of ambiguity:}\\
+
 \subsection{"Can you book a flight to London?"}
 
 \textbf{Distinct Parse(s):} 2\\
@@ -532,6 +557,8 @@ def maybe_build(self, start, mid, end):
 	\textbf{\emph{VP(2,7) $\rightarrow$ VP(2,5) PP(5,7)}\\
 	\emph{VP(2,7) $\rightarrow$ VPt $\rightarrow$ Vt(2,3) NP(3,7)}}
 \end{center}
+
+\textbf{Interpretation of ambiguity:}\\
 
 \subsection{"Why did John book the flight?"}
 
@@ -554,6 +581,7 @@ def maybe_build(self, start, mid, end):
 	\emph{VP(5,10) $\rightarrow$ VP(5,9) Adv(9,10)}}
 \end{center}
 
+\textbf{Interpretation of ambiguity:}\\
 
 
 %----------------------------------------------------------------------------------------
