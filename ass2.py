@@ -8,7 +8,14 @@ def tokenise(tokenstring):
   '''Split a string into a list of tokens, treating punctuation as
   separate tokens, and splitting contractions into their parts.
   So for example "I'm leaving." --> ["I","'m","leaving","."]'''
-  return re.findall(r"[a-zA-Z]+|'[a-z]+|[,.?;:()-]", tokenstring)
+  # normalize possessive ' to possessive 's
+  normalized_1 = re.sub(r"s'\b", "s's ", tokenstring)
+  # if ' is followed by more that 2 digits, it's not a year
+  # split into ' and digit string
+  normalized_2 = re.sub(r"'(\d{3})", r"' \1", regularized_1)
+  # find all alphanumeric strings, 'digit-digit strings, 's/'d/'m etc. strings
+  # and single punctuation marks
+  return re.findall(r"[a-zA-Z\d]+|'\d\d\b|'[a-z]*|[,.?;:()-]", regularized_2)
 
 
 grammar=parse_grammar("""

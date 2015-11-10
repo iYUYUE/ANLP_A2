@@ -90,9 +90,45 @@
 %----------------------------------------------------------------------------------------
 %	QUESTION 1
 %----------------------------------------------------------------------------------------
-
 \section{Tokenization}
 
+Tokenizing a sentence by identifying strings which match
+
+\begin{center}
+\begin{tabular}{l r}
+	{[}a-zA-Z{]}+&tokens consisting of any number of letters\\
+	'[a-z]+&tokens consisting of ' proceeding any number of letters\\
+	{[},.?;:()-{]}&tokens consisting of single punctuation marks\\
+\end{tabular}
+\end{center}
+would be sufficient to account for the most common English uses of punctuation symbols, including recognizing as separate tokens possesive \emph{'s} and contractions such as \emph{'d, 't, 're}.  However, there is a number of problematic cases:
+
+\begin{itemize}
+	\item
+	lone apostrophes as possessive suffix on nominals ending in s (such as \emph{flowers' pollen} meaning pollen of many flowers);
+	\item
+	ellipsis of the centuries part of a year (such as \emph{the '70s, in the '98});
+	\item
+	informal contractions (such as \emph{about $\rightarrow$ 'bout, unless $\rightarrow$  ’less, because $\rightarrow$  'cause, and $\rightarrow$ 'n'});
+	\item
+	surnames and lexical items with apostrophes (such as \emph{'o clock, O'Brian, M'Gregor});
+\end{itemize}
+The tokenize function changes the lone-apostrophes possessive into \emph{'s} so that a word can be tokenized into its main lexical part and the possessive suffix. It also recognizes contracted dates. The other two problems, being largely lexical, remain unsolved.
+
+\begin{lstlisting}
+def tokenise(tokenstring):
+'''Split a string into a list of tokens, treating punctuation as
+separate tokens, and splitting contractions into their parts.
+So for example "I'm leaving." --> ["I","'m","leaving","."]'''
+	# normalize possessive ' to possessive 's
+	normalized_1 = re.sub(r"s'\b", "s's ", tokenstring)
+	# if ' is followed by more that 2 digits, it's not a year
+	# split into ' and digit string
+	normalized_2 = re.sub(r"'(\d{3})", r"' \1", regularized_1)
+	# find all alphanumeric strings, 'digit-digit strings, 's/'d/'m etc. strings
+	# and single punctuation marks
+	return re.findall(r"[a-zA-Z\d]+|'\d\d\b|'[a-z]*|[,.?;:()-]", regularized_2)
+\end{lstlisting}
 %----------------------------------------------------------------------------------------
 %	QUESTION 2
 %----------------------------------------------------------------------------------------
@@ -152,10 +188,7 @@
 \section{Remarks on the grammar}
 
 \begin{description}
-	\item[Design of the grammar rules]
-	\item[Positive aspects]
-	\item[Negative aspects]
-	
+	\subsection{Design of the grammar rules}
 	\begin{enumerate}
 		\item
 		\textbf{Redundancy of rules in the verbal domain}
@@ -193,27 +226,42 @@
 			
 		\end{center}
 		
+		
 		\item
 		\textbf{Redundancy of rules in the nominal domain}
 		
-		Similarly, the NP0 non-terminal node seems redundant. It's purpose is to allow for recursive generation of prepositional phrases following a noun phrase. This can be achieved by accounting for this kind of recursion within one of the existinf NP rules. We could propose:
-		
+		Redundancy can be also observed among the nominal rules. The \emph{NP\textsubscript{0}} non-terminal node seems redundant. It's purpose is to allow for recursive generation of prepositional phrases following a noun phrase. This can be achieved by accounting for this kind of recursion within one of the existing NP rules. We could propose two sets of rules to replace the following:
+		\begin{center}
+			NP $\rightarrow$ PropN $\vert$  Pro $\vert$  NP\textsubscript{0}
+			
+			NP\textsubscript{0} $\rightarrow$ NP\textsubscript{1} $\vert$  NP\textsubscript{0} PP
+			
+			NP\textsubscript{1} $\rightarrow$ Det N2sc $\vert$  N2mp $\vert$  Sc
+			
+		\end{center}
+		The first replacement option moves recursive \emph{PP} addition into an \emph{NP} expansion rule:
 		\begin{center}
 			
-			NP $\rightarrow$ PropN $\vert$ Pro $\vert$ NP1 $\vert$ NP PP
+			NP $\rightarrow$ PropN $\vert$ Pro $\vert$ NP\textsubscript{1} $\vert$ NP PP
 			
-			NP1 $\rightarrow$ Det N2sc $\vert$ N2mp $\vert$ Sc $\vert$ NP1 PP
+			NP\textsubscript{1} $\rightarrow$ Det N2sc $\vert$  N2mp $\vert$  Sc
+			
+		\end{center}
+		Such rearrangement has the advantage of allowing for not only common nouns, but also proper names and pronouns to be modified by \emph{PPs}. This could be desirable in a more comprehensive grammar, but additional restrictions would be required, e.g. to account for pronouns generally not taking \emph{PP} complements.
+		The second option moves the recursion into an \emph{NP\textsubscript{1}} expansion:
+		\begin{center}
+			
+			NP $\rightarrow$ PropN $\vert$  Pro $\vert$  NP\textsubscript{1}
+			
+			NP\textsubscript{1} $\rightarrow$ Det N2sc $\vert$ N2mp $\vert$ Sc $\vert$ NP\textsubscript{1} PP
+			
 			
 		\end{center}
 		
-		The first option has the advantage of allowing for proper names and pronouns to be modified by prepositional phrases, which could be desirable in a more comprehensive grammar, however is not necessary for the grammar at hand. The second proposition is more conservative in that it would not lead to generating any string the original grammar doesn't. The 
-		\begin{center}
-			
-			\emph{NP0 $\rightarrow$ NP1 $\vert$ NP0 PP}
-			
-		\end{center}
-		rule expands to an \emph{NP1} followed by an arbitrary number of \emph{PPs}. The same effect will be achieved by adding the \emph{NP1 -> NP1 PP} expansion, with the benefit of reducing the number of non-terminals.
-		One might argue that the \emph{NP0} node corresponds approximately to an X' node in X-bar syntax, and hence is theoretically justified. This, however, would need to mean that PPs to the right of the head noun are adjuncts rather than complements of that noun, which is not true. [TODO citation]
+		It is more conservative in that with these rules in replacing the originals, the grammar would generate the same strings, i.e. the grammars with and without replacement would be weakly equivalent [TODO citation].
+		The \emph{NP\textsubscript{0}} node expands to an \emph{NP\textsubscript{1}} followed by an arbitrary number of \emph{PPs}. The same effect will be achieved by recursively expanding \emph{NP\textsubscript{1}}  into an \emph{NP\textsubscript{1}} and  \emph{PP}, with the benefit of reducing the number of non-terminals.
+		
+		One might argue that linguistic justification of the existence of the \emph{NP\textsubscript{0}} can be found in its correspondence with N' node in X-bar syntax. Both are projections above N and below full NP, and allow for adding in principle an unlimited number of modifiers to the head N-complement unit[TODO citation]. However, the recursive expansion of the \emph{NP\textsubscript{0}} node implies that PPs to the right of head N are adjuncts rather than complements of that N, which is not true. [TODO citation]. The similarity between \emph{NP\textsubscript{0}} and N' is superficial and can be rejected as motivation for including the former in the grammar. 
 		
 		\item
 		\textbf{Dobtfull usefulness of the \textit{Sq} node}
@@ -237,7 +285,7 @@
 		It does not seem necessary to include lower case and capitalized versions of the same terminals. In the sample sentences we have seen \textit{Book, Can}, and \textit{Why} being capitalized to account for their sentence-initial positions. instead of duplicating lexical items, we could simply capitalize  the first word of a generated sentence and ignore sentence-initial capitalization during parsing.
 		There would be no ill effects of such a change, since every generated sentence is, by definition, grammatical. Every word which happens to be initial in a sentence produced by the grammar is allowed to be there. The additional confirmation of this fact in form of the word's capitalised version being present in the grammar is unnecessary.
 	\end{enumerate}
-	\item[Overgeneration]
+	\subsection{Overgeneration}
 	\begin{enumerate}
 		\item
 		\textbf{Lack of subject-verb agreement}
@@ -416,7 +464,7 @@ def maybe_build(self, start, mid, end):
 
 \textbf{Distinct Parse(s):} 3\\
 
-\textbf{Ambiguity Source:} 3 different \textbf{VP} found in (1,6) can pair up with the \textbf{NP} in (0,1) to form \textbf{Sdecl}. The \textbf{VP} came from the following rules:
+\textbf{Ambiguity Source:} 3 different \textbf{VPs} found in (1,6) can pair up with the \textbf{NP} in (0,1) to form \textbf{Sdecl}. The \textbf{VPs} came from the following rules:
 
 \begin{center}
 	\textbf{\emph{VP $\rightarrow$ VP(1,4) PP(4,6)}\\
