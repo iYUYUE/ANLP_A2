@@ -12,10 +12,10 @@ def tokenise(tokenstring):
   normalized_1 = re.sub(r"s'\b", "s's ", tokenstring)
   # if ' is followed by more that 2 digits, it's not a year
   # split into ' and digit string
-  normalized_2 = re.sub(r"'(\d{3})", r"' \1", regularized_1)
+  normalized_2 = re.sub(r"'(\d{3})", r"' \1", normalized_1)
   # find all alphanumeric strings, 'digit-digit strings, 's/'d/'m etc. strings
   # and single punctuation marks
-  return re.findall(r"[a-zA-Z\d]+|'\d\d\b|'[a-z]*|[,.?;:()-]", regularized_2)
+  return re.findall(r"[a-zA-Z\d]+|'\d\d\b|'[a-z]*|[,.?;:()-]", normalized_2)
 
 
 grammar=parse_grammar("""
