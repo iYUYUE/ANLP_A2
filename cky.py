@@ -48,7 +48,7 @@ class CKY:
         Optional verbose argument controls debugging output, defaults to False '''
         self.verbose=verbose
         self.words = tokens
-        # size of the matrix
+        # size of the matrix, which equals to number of gaps between words
         self.n = len(self.words)+1
         self.matrix = []
         # We index by row, then column
@@ -58,24 +58,27 @@ class CKY:
         # 1      Y   X
         # 2          X
         # ...
+        # create as many rows as there are words
         for r in range(self.n-1):
-             # fill in rows
+             # create a row
              row=[]
              for c in range(self.n):
-                 # fill in columns
+                 # populate the row with cells
                  if c>r:
-                     # This is one we care about, add a cell
+                     # create only cells corresponding to the upper right half
+                     # of the matrix
                      row.append(Cell())
                  else:
-                     # just a filler
+                     # rest of the matrix is to be filled with None instead of Cell
                      row.append(None)
-             # add the row
+             # add the row to the matrix
              self.matrix.append(row)
         # fill in the middle diagonal
         self.unary_fill()
-        # proceed across the upper-right diagonals 
+        # proceed to fill subsequent upper-right diagonals 
         # in increasing order of constituent length
         self.binary_scan()
+        # I don't really know what's happening here - maybe you do?
         return self.grammar.start() in self.matrix[0][self.n-1].labels()
 
     def unary_fill(self):
