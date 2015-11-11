@@ -187,9 +187,8 @@ So for example "I'm leaving." --> ["I","'m","leaving","."]'''
 %----------------------------------------------------------------------------------------
 \section{Remarks on the grammar}
 
-\begin{description}
 	\subsection{Design of the grammar rules}
-	\begin{enumerate}
+		\begin{enumerate}
 		\item
 		\textbf{Redundancy of rules in the verbal domain}
 		
@@ -258,15 +257,15 @@ So for example "I'm leaving." --> ["I","'m","leaving","."]'''
 			
 		\end{center}
 		
-		It is more conservative in that with these rules in replacing the originals, the grammar would generate the same strings, i.e. the grammars with and without replacement would be weakly equivalent [TODO citation].
+		It is more conservative in that with these rules in replacing the originals, the grammar would generate the same strings, i.e. the grammars with and without replacement would be weakly equivalent \cite{jurafskymartin2008slp}.
 		The \emph{NP\textsubscript{0}} node expands to an \emph{NP\textsubscript{1}} followed by an arbitrary number of \emph{PPs}. The same effect will be achieved by recursively expanding \emph{NP\textsubscript{1}}  into an \emph{NP\textsubscript{1}} and  \emph{PP}, with the benefit of reducing the number of non-terminals.
 		
-		One might argue that linguistic justification of the existence of the \emph{NP\textsubscript{0}} can be found in its correspondence with N' node in X-bar syntax. Both are projections above N and below full NP, and allow for adding in principle an unlimited number of modifiers to the head N-complement unit[TODO citation]. However, the recursive expansion of the \emph{NP\textsubscript{0}} node implies that PPs to the right of head N are adjuncts rather than complements of that N, which is not true. [TODO citation]. The similarity between \emph{NP\textsubscript{0}} and N' is superficial and can be rejected as motivation for including the former in the grammar. 
+		One might argue that linguistic justification of the existence of the \emph{NP\textsubscript{0}} can be found in its correspondence with N' node in X-bar syntax. Both are projections above N and below full NP, and allow for adding in principle an unlimited number of modifiers to the head \cite{kornaipullum1990x-bar}. However, the unlimited recursive expansion of the \emph{NP\textsubscript{0}} node implies that a noun can have many PP adjuncts, which does not seem justified. Nominal PP adjuncts do exist, for instance in the NP \emph{the teapot on the table}, but whether they are stackable is not obvious \cite{hedberg1999nomadjuncts}. We can say \emph{the teapot on the table in the kitchen}, but the second PP might be modifying \emph{table} rather than \emph{teapot}. This is clear in the phrase \emph{the teapot on the table with a crack}, where its the table that has a crack, not the teapot. The similarity between \emph{NP\textsubscript{0}} and N' thus seems superficial and can be rejected as motivation for including the former in the grammar.
 		
 		\item
 		\textbf{Dobtfull usefulness of the \textit{Sq} node}
 		
-		The \emph{Sq} node serves no purpose other than to reflect the conceptual relation between \emph{Sqyn} and \emph{Swhadv}, namely the fact both are non-terminals expanding into questions. This, however, represents only a superficial, if not mistaken, grammatical insight. In fact wh-questions and auxiliary-inversion questions are represented by very different structures (WH-phrases and Aux-phrases respectively[TODO citation]). If the motivation for including the \emph{Sq} node it linguistic, then the reasons seem insufficient.
+		The \emph{Sq} node serves no purpose other than to reflect the conceptual relation between \emph{Sqyn} and \emph{Swhadv}, namely the fact both are non-terminals expanding into questions. This, however, represents only a superficial, if not mistaken, grammatical insight. In fact wh-questions and auxiliary-inversion questions are represented by different structures (and are created by different kinds of movement processes \cite{carnie2013syntax}]). If the motivation for including the \emph{Sq} node it linguistic, then the reasons seem insufficient.
 		If, one the other hand, the node was included in the grammar to simplify the expansion of \emph{S}, then by analogy we should also include
 		\begin{center}
 			
@@ -284,9 +283,9 @@ So for example "I'm leaving." --> ["I","'m","leaving","."]'''
 		
 		It does not seem necessary to include lower case and capitalized versions of the same terminals. In the sample sentences we have seen \textit{Book, Can}, and \textit{Why} being capitalized to account for their sentence-initial positions. instead of duplicating lexical items, we could simply capitalize  the first word of a generated sentence and ignore sentence-initial capitalization during parsing.
 		There would be no ill effects of such a change, since every generated sentence is, by definition, grammatical. Every word which happens to be initial in a sentence produced by the grammar is allowed to be there. The additional confirmation of this fact in form of the word's capitalised version being present in the grammar is unnecessary.
-	\end{enumerate}
+		\end{enumerate}
 	\subsection{Overgeneration}
-	\begin{enumerate}
+		\begin{enumerate}
 		\item
 		\textbf{Lack of subject-verb agreement}
 		
@@ -317,12 +316,12 @@ So for example "I'm leaving." --> ["I","'m","leaving","."]'''
 			Simp $\rightarrow$ $VPt_inf$ $\vert$ $VPi_inf$
 			
 		\end{center}
-		Even then, additional restrictions would be needed to account for characteristics of the imperative mood, e.g. the fact that the second person pronoun needs to be in its reflexive form when used as a direct object of the matrix verb [TODO citation] . Otherwise the grammar would generate sentences such as \emph{*Book you a flight to London.} instead of grammatical \emph{*Book yourself a flight to London.}
+		Even then, additional restrictions would be needed to account for characteristics of the imperative mood, e.g. the fact that the second person pronoun needs to be in its reflexive form when used as a direct object of the matrix verb \cite{palmer2001modality} . Otherwise the grammar would generate sentences such as \emph{*Book you a flight to London.} instead of grammatical \emph{*Book yourself a flight to London.}
 		
 		\item
 		\textbf{Case agreement}
 		
-		The grammar does not account for case subcategorisation requirements of verbs. The only corner of the modern English syntax which still exhibits case phenomena is the pronoun system[TODO citation], however the grammar does not include a \emph{ProNom} and a \emph{ProAcc} pre-terminals. Having no distinction between nominative and accusative forms leads to admitting non-grammatical sentences, e.g.\emph{*Mary gave \textbf{he} a nice salad.} instead of \emph{Mary gave \textbf{him} a nice salad.}
+		The grammar does not account for case subcategorisation requirements of verbs. The only corner of the modern English syntax which still exhibits case phenomena is the pronoun system \cite{pullum2002cgel}, however the grammar does not include a \emph{ProNom} and a \emph{ProAcc} pre-terminals. Having no distinction between nominative and accusative forms leads to admitting non-grammatical sentences, e.g.\emph{*Mary gave \textbf{he} a nice salad.} instead of \emph{Mary gave \textbf{him} a nice salad.}
 		
 		\item
 		\textbf{Verb and noun subcategorization for pronouns}
@@ -333,8 +332,8 @@ So for example "I'm leaving." --> ["I","'m","leaving","."]'''
 		\textbf{Multiple modals}
 		
 		The grammar allows for an unlimited number of modals to proceed a \emph{VP}. This can lead to generating sentences such as \emph{*Can will can can John book a flight?}. However, English limits the acceptable number (up to 4, depending on dialetct), orderings (evidential, epistemic, deontic), and identity (\emph{might} or \emph{may} being the most commonly first in the sequence (Di Paolo 1989)) of verbs in multiple modal constructions. In order to capture these restrictions we would need a whole series of serially connected expansion rules, each introducing one modal of a certain type.
-	\end{enumerate}
-\end{description}
+		\end{enumerate}
+
 %----------------------------------------------------------------------------------------
 %	QUESTION 4
 %----------------------------------------------------------------------------------------
@@ -530,6 +529,25 @@ In this parse both \emph{drawing} and \emph{book} are treated as nouns, and N2sc
 \end{center}
 
 \textbf{Interpretation of ambiguity:}\\
+{[}VP {[}VP ate salad{]} {[}PP with mushrooms with a fork{]}{]}
+
+On this interpretation the mushrooms, who have the fork, were keeping John company while he was eating the salad. It is a nonsensical parse in this case, but would be a correct one for a sentence such as \emph{John planned a trip with a friend with disability}.
+
+{[}VP {[}VP {[}VP ate salad{]} {[}PP with mushrooms{]}{]} {[}PP with a fork{]}{]}
+
+In this parse \emph{with mushrooms} is a modifier of a salad-eating event. This structure would be a good representation for a sentence such as \emph{John ate salad with pleasure on a rooftop terrace} where there is an event, namely salad eating, and two PP modifiers.
+
+{[}VP {[}VP {[}VPt {[}Vt ate{]} {[}NP salad with mushrooms{]}{]}{]} {[}PP with a fork{]}{]}
+
+This is the correct analysis. It captures the fact that \emph{salad with mushrooms} is a constituent and that it should be treated as an object of the verb. The PP is correctly represented as a modifier of a full VP, since it is not an argument of a verb. 
+
+{[}VP {[}VPt {[}Vt ate{]} {[}NP {[}NP0 {[}NP0 salad{]} {[}PP with mushrooms with a fork{]}{]}{]}{]}{]}
+
+In this analysis the PP \emph{with a fork} modifies its closest noun, hence the salad is full of mushrooms, which have a fork. It would be an appropriate parse for a sentence such as \emph{John ate a salad with truffles from Piedmont}.
+
+{[}VP {[}VPt {[}Vt ate{]} {[}NP {[}NP0 {[}NP0 salad with mushrooms{]} {[}PP with a fork{]}{]}{]}{]}{]}
+
+Finally, the two PPs following \emph{salad} can be treated as two separate modifiers of the noun. On this reading the salad is with mushrooms, and it is also with a fork. Again, the interpretation is nonsensical. It could be correctly applied to the sentence \emph{Jane admired the earings with sapphires from her grandmother}, on the condition that the earrings were from the grandmother, not the sapphires.
 
 \subsection{"Book a flight to NYC."}
 
@@ -544,6 +562,13 @@ In this parse both \emph{drawing} and \emph{book} are treated as nouns, and N2sc
 \end{center}
 
 \textbf{Interpretation of ambiguity:}\\
+{[}VP {[}VP Book {[} NP a flight{]}{]} {[}PP to NYC{]}{]}
+
+In this parse the booking of a flight happens to NYC, which does not represent the meaning of the sentence correctly. This structure would be appropriate for a sentence such as \emph{Book a flight with my credit card}, where the final PP is indeed a modifier of the booking event.
+
+{[}VP {[}VPt Book {[}NP a flight {[}PP to NYC{]}{]}{]}
+This is the correct analysis, on which someone is to book a flight whose destination is NYC.
+
 
 \subsection{"Can you book a flight to London?"}
 
@@ -559,6 +584,13 @@ In this parse both \emph{drawing} and \emph{book} are treated as nouns, and N2sc
 \end{center}
 
 \textbf{Interpretation of ambiguity:}\\
+
+{[}VP {[}VP book a flight{]} {[}PP to London{]}{]}
+
+{[}VP {[}VPt {[}Vt book{]} {[}NP a flight to London{]}{]}{]}
+
+This ambiguity is discussed in section 7.5
+
 
 \subsection{"Why did John book the flight?"}
 
@@ -582,6 +614,21 @@ In this parse both \emph{drawing} and \emph{book} are treated as nouns, and N2sc
 \end{center}
 
 \textbf{Interpretation of ambiguity:}\\
+
+{[}VP {[}VP told Mary that he will book a flight{]} {[}Adv today{]}{]}
+
+On this analysis the adverb modifies the telling event, not the booking event, which is	a sensible interpretation of the sentence. However, it is more natural in English to move heavy constituents to the left, and so we might have expected \emph{John told Mary today that he will book a flight}.
+
+{[}VP {[}Mod will{]} {[}VP {[}VP book a flight{]} {[Adv today{]}{]}{]}
+
+The difference between the two other interpretations is subtle. In both cases the adverb modifies booking rather than telling. In the analysis above John books something today. This treats \emph{today} as a VP adverb.
+
+{[}VP {[}VP {[} Mod will{]} {[}VP book a flight{]}{]} {[}Adv today{]}{]}
+
+In the alternative parse, John will do something today. This treats \emph{today} as a sentential adverb.
+
+The difference between two parses lies in whether \emph{today} adjoins to a VP or an AuxP/IP (auxiliary aka inflectional phrase). Distribution of adverbs is complex and in principle an adverb might modify either of those phrases. In the case at hand the VP-adjunction analysis seems to be the correct one, since sentential adverbs generally do not appear clause-finally \cite{potsdam1998adverbs}. 
+
 
 
 %----------------------------------------------------------------------------------------

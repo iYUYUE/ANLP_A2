@@ -1,5 +1,37 @@
 \begin{thebibliography}{1}
 
+\bibitem{jurafskymartin2008slp}
+D.~Jurafsky and J.~Martin, {\em Speech and language processing: An introduction
+  to natural language processing, computational linguistics, and speech
+  recognition}.
+\newblock Upper Saddle River, N.J: Prentice Hall, 2008.
+
+\bibitem{kornaipullum1990x-bar}
+G.~Kornai, Andras;~Pullum, ``The x-bar theory of phrase structure,'' {\em
+  Language}, pp.~24--50, 1990.
+
+\bibitem{hedberg1999nomadjuncts}
+N.~Hedberg and R.~DeArmond, ``On nominal complements and adjuncts,'' {\em
+  Proceedings of the 1999 Annual Conference of the Canadian Linguistics
+  Association}, 1999.
+
+\bibitem{carnie2013syntax}
+A.~Carnie, {\em Syntax. A generative introduction}.
+\newblock Oxford, England: Blackwell, 2013.
+
+\bibitem{palmer2001modality}
+F.~Palmer, {\em Mood and modality}.
+\newblock Cambridge: Cambridge University Press, 2001.
+
+\bibitem{pullum2002cgel}
+R.~Huddleston and G.~Pullum, {\em The Cambridge Grammar of the English
+  Language}.
+\newblock Cambridge: Cambridge University Press, 2002.
+
+\bibitem{potsdam1998adverbs}
+E.~Potsdam, ``A syntax for adverbs,'' {\em WECOL 98, Proceedings of the Western
+  Conference on Linguistics}, pp.~397--411, 1998.
+
 \bibitem{lang1994recognition}
 B.~Lang, ``Recognition can be harder than parsing,'' {\em Computational
   Intelligence}, vol.~10, no.~4, pp.~486--494, 1994.
