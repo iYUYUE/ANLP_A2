@@ -11,9 +11,9 @@ class CKY:
     In particular it allows arbitrary unary productions, not just NT->T
     ones: It also allows unary-to-binary, i.e. X -> Y where Y -> A B"""
     def __init__(self,grammar):
-        '''Create a CKY parser for a particular grammar, an NLTK CFG
+        """ Create a CKY parser for a particular grammar, an NLTK CFG
         consisting of unary and binary rules (no empty rules,
-        no more than two symbols on the right-hand side'''
+        no more than two symbols on the right-hand side """
         self.verbose=False
         assert(isinstance(grammar,CFG))
         self.grammar=grammar
@@ -43,9 +43,9 @@ class CKY:
                 self.binary[rhs].append(lhs)
 
     def parse(self,tokens,verbose=False):
-        '''Initialise a matrix from the sentence,
+        """ Initialise a matrix from the sentence,
         then parse it across the middle and upper-right diagonals
-        Optional verbose argument controls debugging output, defaults to False '''
+        Optional verbose argument controls debugging output, defaults to False """
         self.verbose=verbose
         self.words = tokens
         # size of the matrix, which equals to number of gaps between words
@@ -82,10 +82,10 @@ class CKY:
         return self.grammar.start() in self.matrix[0][self.n-1].labels()
 
     def unary_fill(self):
-        '''Determine the possible non-terminals 
+        """ Determine the possible non-terminals 
             that each terminal can result from. 
             Fill the results in the middle diagonal
-            and print'''
+            and print """
         for r in range(self.n-1):
             # the middle diagonal
             cell=self.matrix[r][r+1]
@@ -99,9 +99,9 @@ class CKY:
                 print "Unary branching rules at node (%s,%s):%s"%(r,r+1,cell.labels())
 
     def binary_scan(self):
-        '''The heart of the parser:
+        """ The heart of the parser:
             proceed across the upper-right diagonals
-            in increasing order of constituent length'''
+            in increasing order of constituent length """
         for span in xrange(2, self.n):
             for start in xrange(self.n-span):
                 end = start + span
@@ -109,11 +109,9 @@ class CKY:
                     self.maybe_build(start, mid, end)
 
     def maybe_build(self, start, mid, end):
-        """
-        Search for the possible combinitions of 
+        """ Search for the possible combinitions of 
             the symbols in two given cells (one from each) to 
-            match the rhs of binary branching rules
-        """
+            match the rhs of binary branching rules """
         if self.verbose:
             print "Binary branching rules for %s--%s--%s:"%(start,mid,end),
         cell=self.matrix[start][end]
@@ -135,7 +133,7 @@ class CKY:
             print 
 
     def pprint(self,cell_width=8):
-        '''Try to print matrix in a nicely lined-up way'''
+        """ Try to print matrix in a nicely lined-up way """
         row_max_height=[0]*(self.n)
         col_max_width=[0]*(self.n)
         print_matrix=[]
@@ -175,9 +173,9 @@ class CKY:
                 print row_fmt%tuple(row_strs)
                  
 def wtp(l,subrows,maxrows):
-    '''figure out what row or filler from within a cell
+    """ figure out what row or filler from within a cell
     to print so that the printed cell fills from
-    the bottom.  l will be in range(mrh)'''
+    the bottom.  l will be in range(mrh) """
     offset=maxrows-len(subrows)
     if l>=offset:
         return subrows[l-offset]
@@ -185,7 +183,7 @@ def wtp(l,subrows,maxrows):
         return ''
 
 class Cell:
-    '''A cell in a CKY matrix'''
+    """ A cell in a CKY matrix """
     def __init__(self):
         self._labels=[]
 
@@ -193,9 +191,9 @@ class Cell:
         return self.str()
 
     def str(self,width=8):
-        '''Try to format labels in a rectangule,
+        """ Try to format labels in a rectangule,
         aiming for max-width as given, but only
-        breaking between labels'''
+        breaking between labels """
         labs=self.labels()
         n=len(labs)
         res=[]

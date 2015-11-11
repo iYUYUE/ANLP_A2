@@ -35,7 +35,7 @@ Relpro -> 'that'
 """)
 
 # print grammar
-# chart=CKY(grammar)
+chart=CKY(grammar)
 # chart.parse("the frogs swim".split()) # Should use
 #                                       # tokenise(s) once that's fixed
 # chart.pprint()
@@ -90,9 +90,9 @@ chart2=CKY(grammar2)
 # Q5: Uncomment this once you've completed Q5
 # chart.parse(tokenise("the frogs swim"),True)
 # Q6 Uncomment the next three once when you're working on Q6
-#chart.parse(tokenise("fish fish"))
-#chart.pprint()
-#chart.parse(tokenise("fish fish"),True)
+# chart.parse(tokenise("fish fish"))
+# chart.pprint()
+# chart.parse(tokenise("fish fish"),True)
 # Q7
 # for s in ["John gave a book to Mary.",
 #           "John gave Mary a book.",
@@ -116,7 +116,7 @@ for s in ["John gave a book to Mary.",
     print s, chart2.parse(tokenise(s))
     print chart2.first_tree().pprint()
 
-# Q9
+# Q9 (not implemented)
 # for s in [...]:
 #     print s, chart2.parse(tokenise(s))
 #     for tree in chart2.all_trees():
