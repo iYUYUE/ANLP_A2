@@ -120,57 +120,60 @@ would be sufficient to account for the most common English uses of punctuation s
 \end{itemize}
 The tokenize function changes the lone-apostrophes possessive into \emph{'s} so that a word can be tokenized into its main lexical part and the possessive suffix. It also recognizes contracted dates. The other two problems, being largely lexical, remain unsolved.
 
-\begin{lstlisting}
-def tokenise(tokenstring):
-'''Split a string into a list of tokens, treating punctuation as
-separate tokens, and splitting contractions into their parts.
-So for example "I'm leaving." --> ["I","'m","leaving","."]'''
-	# normalize possessive ' to possessive 's
-	normalized_1 = re.sub(r"s'\b", "s's ", tokenstring)
-	# if ' is followed by more that 2 digits, it's not a year
-	# split into ' and digit string
-	normalized_2 = re.sub(r"'(\d{3})", r"' \1", normalized_1)
-	# find all alphanumeric strings, 'digit-digit strings, 's/'d/'m etc. strings
-	# and single punctuation marks
-	return re.findall(r"[a-zA-Z\d]+|'\d\d\b|'[a-z]*|[,.?;:()-]", normalized_2)
-\end{lstlisting}
+%\begin{lstlisting}
+%def tokenise(tokenstring):
+%'''Split a string into a list of tokens, treating punctuation as
+%separate tokens, and splitting contractions into their parts.
+%So for example "I'm leaving." --> ["I","'m","leaving","."]'''
+%	# normalize possessive ' to possessive 's
+%	normalized_1 = re.sub(r"s'\b", "s's ", tokenstring)
+%	# if ' is followed by more that 2 digits, it's not a year
+%	# split into ' and digit string
+%	normalized_2 = re.sub(r"'(\d{3})", r"' \1", normalized_1)
+%	# find all alphanumeric strings, 'digit-digit strings, 's/'d/'m etc. strings
+%	# and single punctuation marks
+%	return re.findall(r"[a-zA-Z\d]+|'\d\d\b|'[a-z]*|[,.?;:()-]", normalized_2)
+%\end{lstlisting}
 %----------------------------------------------------------------------------------------
 %	QUESTION 2
 %----------------------------------------------------------------------------------------
 \section{Parse trees}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{../s1}
+	\includegraphics[width=0.55\linewidth]{../s1}
 	\caption{\emph{John gave a book to Mary.}}
 	\label{fig:s1}
 \end{figure}
+\hfill \break
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{../s2}
+	\includegraphics[width=0.55\linewidth]{../s2}
 	\caption{\emph{John gave Mary a book.}}
 	\label{fig:s2}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{../s3}
+	\includegraphics[width=0.55\linewidth]{../s3}
 	\caption{\emph{John gave Mary a nice drawing book.}}
 	\label{fig:s3}
 \end{figure}
+\hfill \break
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{../s4}
+	\includegraphics[width=0.55\linewidth]{../s4}
 	\caption{\emph{John ate salad with mushrooms with a fork.}}
 	\label{fig:s4}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{../s5}
+	\includegraphics[width=0.55\linewidth]{../s5}
 	\caption{\emph{Book a flight to NYC.}}
 	\label{fig:s5}
 \end{figure}
+\hfill \break
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{../s6}
+	\includegraphics[width=0.55\linewidth]{../s6}
 	\caption{\emph{Can you book a flight to London?}}
 	\label{fig:s6}
 \end{figure}
